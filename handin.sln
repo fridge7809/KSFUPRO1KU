@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "handin", "handin\handin.fsproj", "{D905E226-C671-42C1-A81E-7DC5B08CFC57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D905E226-C671-42C1-A81E-7DC5B08CFC57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D905E226-C671-42C1-A81E-7DC5B08CFC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D905E226-C671-42C1-A81E-7DC5B08CFC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D905E226-C671-42C1-A81E-7DC5B08CFC57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
