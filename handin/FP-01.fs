@@ -1,4 +1,3 @@
-
 module handin.FP_01
 
 // Exercise 1.1 Write a function sqr:int->int so that sqr x returns x2.
@@ -53,15 +52,21 @@ for m ≥ 0 and n ≥ 0. (Hint: use two clauses with (m,0) and (m,n) as patterns
 Give the recursion formula corresponding to the declaration.*)
 let rec sum (m:int,n:int) =
     match (m,n) with
-    | (m,0) -> m
-    | (m,n) -> m + n + sum (m,n-1)
+    | m,0 -> m
+    | m,n -> m + n + sum (m,n-1)
     
 (*1.7 Determine a type for each of the expressions:
       (System.Math.PI, fact -1)
       fact(fact 4)
       power(System.Math.PI, fact 2)
       (power, fact)*)
-// todo
+
+// (System.Math.PI, fact -1) is a tuple of (float * int)
+// fact(fact 4) is an int
+// power(System.Math.PI, fact 2) is a float
+// (power, fact) is a (float * int -> float) * (int -> int):
+// (float * int -> float) is a function taking a tuple of float and int as input and returns float
+// (int -> int) is a function that takes an int and outputs an int
 
 (*
 1.8 Consider the declarations:
@@ -69,5 +74,4 @@ let rec sum (m:int,n:int) =
       let f a = a + 1;;
       let g b = (f b) + a;;
 Find the environment obtained from these declarations and write the evaluations of the expres- sions f 3 and g 3.
-*)
-// todo
+*) // todo
