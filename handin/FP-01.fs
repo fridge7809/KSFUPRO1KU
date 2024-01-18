@@ -75,3 +75,26 @@ let rec sum (m:int,n:int) =
       let g b = (f b) + a;;
 Find the environment obtained from these declarations and write the evaluations of the expres- sions f 3 and g 3.
 *) // todo
+
+(*Exercise 1.10 Write a function dup:string->string that concatenates a string with itself.
+You can either use + or ˆ. For example:
+val dup : string -> string
+> dup "Hi ";;
+val it : string = "Hi Hi "*)
+
+let dup (s:string) =
+    s + s
+   
+    
+(*
+Exercise 1.11 Write a function dupn:string->int->string so that dupn s n creates the concatenation
+of n copies of s. For example:
+val dupn : string -> int -> string
+> dupn "Hi " 3;;
+val it : string = "Hi Hi Hi "
+*)
+
+let rec dupn (s:string) n =
+    match n with
+    | 1 -> s 
+    | _ -> s + dupn s (n-1)

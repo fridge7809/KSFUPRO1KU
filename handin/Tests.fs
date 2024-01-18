@@ -24,3 +24,10 @@ module ``FP-01`` =
         let expected = 5 |> float
         let actual = h (3,4)
         Assert.Equal(expected, actual)
+        
+    [<Fact>]
+    let ``should duplicate string n times`` () =
+        let expected = "Hi Hi Hi "
+        let actual = dupn "Hi " 3
+        Assert.Equal(expected, actual)
+        
