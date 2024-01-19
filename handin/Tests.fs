@@ -1,10 +1,11 @@
 
 module Tests
 
+open System.Runtime.InteropServices.Marshalling
 open Xunit
 open handin
 
-module ``FP-01`` =
+module ``FP-01 tests`` =
     
     open FP_01
     [<Fact>]
@@ -31,3 +32,23 @@ module ``FP-01`` =
         let actual = dupn "Hi " 3
         Assert.Equal(expected, actual)
         
+module ``FP-02 tests`` =
+    
+    open FP_02
+    [<Fact>]
+    let ``timediff first argument greater`` () =
+        let expected = 34
+        let actual = timediff (12,26) (13,00)
+        Assert.Equal(expected, actual)
+        
+    [<Fact>]
+    let ``timediff second argument greater`` () =
+       let expected = 155
+       let actual = timediff (12,26) (15,01)
+       Assert.Equal(expected, actual)
+       
+    [<Fact>]
+    let ``minutes since midnight`` () =
+        let expected = 62
+        let actual = minutes (01,02)
+        Assert.Equal(expected, actual)
