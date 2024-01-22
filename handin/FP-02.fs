@@ -19,7 +19,7 @@ let rec pow (s:string, i:int) : string =
 
 // Exercise 2.4 Solve HR, exercise 2.8 (CJ)
 
-// Recusive
+// Recursive
 
 let rec bin (n,k) =
     match (n,k) with
@@ -37,11 +37,6 @@ let alternativeBin (n, k) =
     let kFactorial = fact k
     nFactorial / (kFactorial * fact (n-k))
 
-// homemade bespoke unit test relying on structural equality
-let test expected actual =
-    expected = actual
-    
-test (bin (4,2)) (alternativeBin (4,2))
 
 // Exercise 2.5 Solve HR, exercise 2.9
 
@@ -49,3 +44,17 @@ test (bin (4,2)) (alternativeBin (4,2))
 // 2. Terminates on condition x = 0, | (0,y) -> y
 // 3. (2,3) -> (1,6) -> (0, 6) -> 6
 // 4. f(x,y) calculates the product of consecutive integers from x down to 1 (base case), multiplying each integer with the running product y
+
+// Exercise 2.6 Solve HR, exercise 2.10
+
+// 1. The type is bool * int -> int. Normal language: Tuple (pair) of bool and int that maps to an int
+// 2. test(false,fact(-1) evaluates to 0
+// 3. in that case, the function executes the false path and calls fact with -1, which maps to -1
+
+// Exercise 2.7 Solve HR, exercise 2.13 (CJ)
+
+let curry (f : 'a * 'b -> 'c) : 'a -> 'b -> 'c =
+    fun x y -> f (x,y)
+
+let uncurry (g : 'a -> 'b -> 'c) : 'a * 'b -> 'c =
+    fun (x,y) -> g x y
