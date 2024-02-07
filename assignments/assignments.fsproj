@@ -6,9 +6,11 @@
         <IsPackable>false</IsPackable>
         <GenerateProgramFile>false</GenerateProgramFile>
         <IsTestProject>true</IsTestProject>
+        <RootNamespace>handin</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="FP-03.fs" />
         <Compile Include="FP-02.fs" />
         <Compile Include="FP-01.fs" />
         <Compile Include="Tests.fs"/>
