@@ -75,7 +75,7 @@ Find the environment obtained from these declarations and write the evaluations 
 *) 
 
 // Environment obtained: 
-// The environment consists of the binding a = 5
+// Environment: env = [ a -> 5 ]
 // Evaluations: 
 // f 3 = 4
 // g 3 = 9
