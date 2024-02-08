@@ -46,8 +46,8 @@ let rec fibonacci (n:int) : int =
     match n with
     | 0 -> n
     | 1 -> n
-    | _ -> fibonacci(n - 1) + fibonacci(n - 2)
-let fResult = f 4
+    | _ -> fibonacci(n-1) + fibonacci(n-2)
+let fResult = fibonacci 4
 
 (* 
 1.7 (1.6) Declare a recursive function sum: int * int -> int, where
