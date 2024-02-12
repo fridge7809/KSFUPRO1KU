@@ -72,7 +72,7 @@ let rec sum (m:int,n:int) : int =
 // fact(fact 4) is an int
 // power(System.Math.PI, fact 2) is a float
 // (power, fact) is a (float * int -> float) * (int -> int):
-// (float * float -> float) is a function taking a tuple of float and float as input and maps to a float
+// (float * int -> float) is a function taking a tuple of float and float as input and maps to a float
 // (int -> int) is a function that takes an int and maps to an int
 
 (*
@@ -86,8 +86,8 @@ Find the environment obtained from these declarations and write the evaluations 
 // Environment obtained: 
 // Environment: env = [ a -> 5 ]
 // Evaluations: 
-// f 3 = 4
-// g 3 = 9
+// f 3 = 3 + 1 = 4
+// g 3 = 4 + 5 = 9
 
 (*
 Exercise 1.10 Write a function dup:string->string that concatenates a string with itself.
