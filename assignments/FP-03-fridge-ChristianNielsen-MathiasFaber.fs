@@ -1,4 +1,4 @@
-module handin.FP_03
+module assignments.FP_03
 
 (*Exercise 3.1 Write a function
 downTo:int->int list

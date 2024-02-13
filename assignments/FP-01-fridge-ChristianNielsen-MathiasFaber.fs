@@ -1,4 +1,4 @@
-module handin.FP_01
+module assignments.FP_01
 
 // Exercise 1.1 Write a function sqr:int->int so that sqr x returns x2.
 let sqr (x:int) : int =

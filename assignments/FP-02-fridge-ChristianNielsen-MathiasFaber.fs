@@ -1,26 +1,30 @@
-module handin.FP_02
+module assignments.FP_02
 
-// Exercise 2.1
-let timediff (hh1,mm1) (hh2,mm2) =
+// Exercise 2.1. Solution: convert hours to minutes, and subtract minutes of pair2 from pair1
+let timediff (hh1 : int,mm1 : int) (hh2 : int, mm2 : int) =
     let minutes1 = (hh1*60) + mm1
     let minutes2 = (hh2*60) + mm2
-    abs (minutes1 - minutes2)
+    (minutes2 - minutes1) // could alternatively use absolute value but this wasn't the case for example values given
     
-// Exercise 2.2
+// Exercise 2.2. Solution: bind value (00,00) to midnight and call timediff with midnight and parameter
 let minutes (hh,mm) =
-    timediff (hh,mm) (00,00)
+    let midnight = (00,00)
+    timediff midnight (hh,mm) 
     
 // Exercise 2.3 Solve HR, exercise 2.2 (CJ)
-
-let rec pow (s:string, i:int) : string =
-    match i with
+(*
+Declare an F# function pow: string * int -> string, where: pow(s,n)=s·s···· ·s
+where we use · to denote string concatenation. (The F# representation is +.)
+*)
+let rec pow (s:string, n:int) : string =
+    match n with
+    | i when i <= 0 -> s
     | 1 -> s
-    | _ -> s + pow (s, i-1)
+    | _ -> s + pow (s, n-1)
 
 // Exercise 2.4 Solve HR, exercise 2.8 (CJ)
 
 // Recursive
-
 let rec bin (n,k) =
     match (n,k) with
     | (_,0) -> 1

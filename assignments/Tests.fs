@@ -3,7 +3,7 @@ module Tests
 
 open System.Runtime.InteropServices.Marshalling
 open Xunit
-open handin
+open assignments
 
 module ``FP-01 tests`` =
     
@@ -37,18 +37,34 @@ module ``FP-02 tests`` =
     open FP_02
     [<Fact>]
     let ``timediff first argument greater`` () =
-        let expected = 34
-        let actual = timediff (12,26) (13,00)
+        let expected = -59
+        let actual = timediff (12,34) (11,35)
         Assert.Equal(expected, actual)
         
     [<Fact>]
     let ``timediff second argument greater`` () =
-       let expected = 155
-       let actual = timediff (12,26) (15,01)
+       let expected = 61
+       let actual = timediff (12,34) (13,35)
        Assert.Equal(expected, actual)
        
     [<Fact>]
     let ``minutes since midnight`` () =
-        let expected = 62
-        let actual = minutes (01,02)
+        let expected = 864
+        let actual = minutes (14,24)
         Assert.Equal(expected, actual)
+        
+    [<Theory>]
+    [<InlineData("elephants", 2, "elephantselephants")>]
+    [<InlineData("apple", 3, "appleappleapple")>]
+    [<InlineData("banana", 4, "bananabananabananabanana")>]
+    [<InlineData("", 5, "")>]
+    [<InlineData("dog", 0, "dog")>]
+    [<InlineData("cat", -1, "cat")>]
+    let ``Excercise 2.3`` (input:string, exponent:int, expected:string) =
+        let actual = pow (input, exponent)
+        Assert.Equal(expected, actual)
+        
+    [<Fact>]
+    let ``Exercise 2.4`` () =
+        let actual = bin 
+        ()
