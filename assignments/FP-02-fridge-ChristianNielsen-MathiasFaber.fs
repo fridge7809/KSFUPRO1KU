@@ -52,7 +52,7 @@ let alternativeBin (n, k) =
 // Exercise 2.6 Solve HR, exercise 2.10
 
 // 1. The type is bool * int -> int. Normal language: Tuple (pair) of bool and int that maps to an int
-// 2. test(false,fact(-1) evaluates to 0
+// 2. Factorial -1 is not defined. By definition we cannot find the factorial of a negative number. This evaluation would keep running witout giving a result.
 // 3. in that case, the function executes the false path and calls fact with -1, which maps to -1
 
 // Exercise 2.7 Solve HR, exercise 2.13 (CJ)
