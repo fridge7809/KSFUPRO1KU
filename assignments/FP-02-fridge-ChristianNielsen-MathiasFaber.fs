@@ -1,15 +1,12 @@
 module assignments.FP_02
 
-// Exercise 2.1. Solution: convert hours to minutes, and subtract minutes of pair2 from pair1
-let timediff (hh1 : int,mm1 : int) (hh2 : int, mm2 : int) =
-    let minutes1 = (hh1*60) + mm1
-    let minutes2 = (hh2*60) + mm2
-    (minutes2 - minutes1) // could alternatively use absolute value but this wasn't the case for example values given
-    
+// Exercise 2.1. Solution: subtract a from c and multiply by 60 to convert hours to minutes. Subtract b from d to get difference in minutes. Add these two to get total minutes difference. 
+let timediff (a: int, b:int) (c:int, d:int) = 
+    ((c-a)*60) + (d-b)
+
 // Exercise 2.2. Solution: bind value (00,00) to midnight and call timediff with midnight and parameter
-let minutes (hh,mm) =
-    let midnight = (00,00)
-    timediff midnight (hh,mm) 
+let minutes (a: int, b: int) = 
+    a*60 + b
     
 // Exercise 2.3 Solve HR, exercise 2.2 (CJ)
 (*
