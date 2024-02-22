@@ -49,9 +49,9 @@ let alternativeBin (n, k) =
 // Exercise 2.6 Solve HR, exercise 2.10
 
 // 1. The type is bool * int -> int. Normal language: Tuple (pair) of bool and int that maps to an int
-// 2. (Assuming that fact(-1) will call the factorial method) 
-//     Factorial -1 is not defined. By definition we cannot find the factorial of a negative number. This evaluation would keep running witout giving a result.
-// 3. in that case, the function executes the false path and calls fact with -1, which maps to -1
+// 2. Because the interpreter evaluates the function eagerly, it will lead to an error where we enter
+// enter infinite recursion as there is no case that matches negative numbers, even if the function isn't applied.
+// 3. Unlike 2, we can short circuit evaluate the condition and we won't have to evaluate fact(-1).
 
 // Exercise 2.7 Solve HR, exercise 2.13 (CJ)
 
