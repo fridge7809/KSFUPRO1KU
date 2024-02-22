@@ -68,3 +68,35 @@ module ``FP-02 tests`` =
     let ``Exercise 2.4`` () =
         let actual = bin 
         ()
+        
+module ``FP-03 tests`` =
+    
+    open FP_03
+    [<Fact>]
+    let ``Exercise 3.1`` () =
+        let expected = [5;4;3;2;1]
+        let actual = downTo 5
+        Assert.Equal<int list>(expected, actual)
+        Assert.Equal<int list>(downTo 5, downTo2 5)
+        
+    [<Fact>]
+    let ``Exercise 3.2`` () =
+        let expected = [2;4;6;8;10]
+        let actual = removeOddIdx [1..10]
+        Assert.Equal<int list>(expected, actual)
+        
+    [<Fact>]
+    let ``Exercise 3.3`` () =
+        let expected = [(1, 2); (3, 4); (5, 6)]
+        let expected2 = [(1, 2); (3, 4)]
+        let actual = combinePair [1;2;3;4;5;6]
+        let actual2 = combinePair [1;2;3;4;5]
+        Assert.Equal<(int*int) list>(expected, actual)
+        Assert.Equal<(int*int) list>(expected2, actual2)
+
+    [<Fact>]
+    let ``Exercise 3.4`` () =
+        let expected = { pounds = 7; shillings = 3; pence = 1 }
+        let amount1 = { pounds = 4; shillings = 18; pence = 6 }
+        let amount2 = { pounds = 2; shillings = 4; pence = 7 }
+        Assert.Equal<amount>(expected, add amount1 amount2)

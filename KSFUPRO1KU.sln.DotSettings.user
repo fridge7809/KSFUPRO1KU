@@ -3,5 +3,9 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::D905E226-C671-42C1-A81E-7DC5B08CFC57::net7.0::Tests+FP-02 tests&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::D905E226-C671-42C1-A81E-7DC5B08CFC57::net7.0::Tests+FP-01 tests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D905E226-C671-42C1-A81E-7DC5B08CFC57::net7.0::Tests+FP-03 tests.Exercise 3.1&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D905E226-C671-42C1-A81E-7DC5B08CFC57::net7.0::Tests+FP-03 tests.Exercise 3.2&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D905E226-C671-42C1-A81E-7DC5B08CFC57::net7.0::Tests+FP-03 tests.Exercise 3.3&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::D905E226-C671-42C1-A81E-7DC5B08CFC57::net7.0::Tests+FP-03 tests.Exercise 3.4&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
