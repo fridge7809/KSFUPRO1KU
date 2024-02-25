@@ -4,6 +4,7 @@ module Tests
 open System.Runtime.InteropServices.Marshalling
 open Xunit
 open assignments
+open assignments.FP_03
 
 module ``FP-01 tests`` =
     
@@ -96,7 +97,25 @@ module ``FP-03 tests`` =
 
     [<Fact>]
     let ``Exercise 3.4`` () =
-        let expected = { pounds = 7; shillings = 3; pence = 1 }
-        let amount1 = { pounds = 4; shillings = 18; pence = 6 }
-        let amount2 = { pounds = 2; shillings = 4; pence = 7 }
-        Assert.Equal<amount>(expected, add amount1 amount2)
+        let expected = Record { pounds = 7; shillings = 3; pence = 1 }
+        let amount1 = Record { pounds = 4; shillings = 18; pence = 6 }
+        let amount2 = Record { pounds = 2; shillings = 4; pence = 7 }
+        Assert.Equal<Currency>(expected, amount1 + amount2)
+    
+    [<Theory>]
+    [<InlineData(1, 2, 2, 4, 3, 6)>]
+    [<InlineData(0, 0, 0, 0, 0, 0)>]
+    [<InlineData(1, 1, 1, 1, 2, 2)>]
+    let ``Exercise 3.5 addition`` (a, b, c, d, e, f) =
+        let expected = Pair (e,f)
+        let actual = (a, b) .+ (c, d)
+        Assert.Equal<Pair>(expected, actual)
+        
+    [<Theory>]
+    [<InlineData(5, 2, 2, 4, 2, 24)>]
+    [<InlineData(10, 3, 0, 0, 0, 0)>]
+    [<InlineData(1, 1, 1, 1, 0, 2)>]
+    let ``Exercise 3.5 multiplication`` (a, b, c, d, e, f) =
+        let expected = Pair (e,f)
+        let actual = (a, b) .* (c, d)
+        Assert.Equal<Pair>(expected, actual)
