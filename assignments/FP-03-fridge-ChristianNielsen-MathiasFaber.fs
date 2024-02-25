@@ -69,47 +69,62 @@ Declare the functions in infix notation with proper precedences,
 and use patterns to obtain readable declarations.
 *)
 
-type amount = {
+type Record = {
     pounds:int
     shillings:int
     pence:int
 }
 
-type tripleAmt = int * int * int
+type Triple = int * int * int
 
-let (+.) ((p1,s1,d1):tripleAmt) ((p2,s2,d2):tripleAmt) =
-    let pence = d1 + d2
-    let shillings = s1 + s2 + pence / 12
-    let pounds = p1 + p2 + shillings / 20
-    (pounds, shillings % 20, pence % 12)
+// This DU is not necessary but it's is slightly less duplication than overloading the operators both types
+type Currency =
+    | Record of Record
+    | Triple of Triple
+    static member (+) (a:Currency, b:Currency) : Currency =
+        match a,b with
+        | Record a, Record b ->
+            let pence = a.pence + b.pence
+            let shillings = a.shillings + b.shillings + pence / 12
+            let pounds = a.pounds + b.pounds + shillings / 20
+            Record {pounds = pounds; shillings = shillings % 20; pence = pence % 12}
+        | Triple (a, b, c), Triple (x, y, z) ->
+            let pence = c + z
+            let shillings = b + y + pence / 12
+            let pounds = a + x + shillings / 20
+            Triple (pounds, shillings % 20, pence % 12)
+        | _ -> failwith "Cannot add different currency with different types"
+    static member (-) (a:Currency, b:Currency) : Currency =
+        match a,b with
+        | Record a, Record b ->
+            let pence = a.pence - b.pence
+            let shillings = a.shillings - b.shillings - (if pence < 0 then 1 else 0)
+            let pounds = a.pounds - b.pounds - (if shillings < 0 then 1 else 0)
+            Record {pounds = pounds; shillings = shillings % 20; pence = pence % 12}
+        | Triple (a, b, c), Triple (x, y, z) ->
+            let pence = c - z
+            let shillings = b - y - (if pence < 0 then 1 else 0)
+            let pounds = a - x - (if shillings < 0 then 1 else 0)
+            Triple (pounds, shillings % 20, pence % 12) 
+        | _ -> failwith "Cannot subtract currency with different types"
     
-let (-.) ((p1,s1,d1):tripleAmt) ((p2,s2,d2):tripleAmt) =
-    let pence = d1 - d2
-    let shillings = s1 - s2 - (if pence < 0 then 1 else 0)
-    let pounds = p1 - p2 - (if shillings < 0 then 1 else 0)
-    (pounds, shillings % 20, pence % 12)
+(*
+Exercise 3.5 Solve HR, exercise 3.3.
+*)
 
-let (+) (a:amount) (b:amount) =
-    let pence = a.pence + b.pence
-    let shillings = a.shillings + b.shillings + pence / 12
-    let pounds = a.pounds + b.pounds + shillings / 20
-    {pounds = pounds; shillings = shillings % 20; pence = pence % 12}
-    
-let (-) (a:amount) (b:amount) =
-    let pence = a.pence - b.pence
-    let shillings = a.shillings - b.shillings - (if pence < 0 then 1 else 0)
-    let pounds = a.pounds - b.pounds - (if shillings < 0 then 1 else 0)
-    {pounds = pounds; shillings = shillings % 20; pence = pence % 12}
-    
-let add (a:amount) (b:amount) =
-    a + b
+// 1. Declare suitable infix functions for addition and multiplication of complex numbers.
+
+type Pair = float * float
    
-let substract (a:amount) (b:amount) =
-    a - b
+let (.+) (a:Pair) (b:Pair) : Pair =
+    let (a1, a2) = a
+    let (b1, b2) = b
+    (a1 + b1, a2 + b2)
+
+let (.*) (x:Pair) (y:Pair) : Pair =
+    let (a, b) = x
+    let (c, d) = y
+    ((a*c) - (b*d), (b*c) + (a*d))
     
-let addTriple (a:tripleAmt) (b:tripleAmt) =
-    a +. b
-    
-let substractTriple (a:tripleAmt) (b:tripleAmt) =
-    a -. b
+// 2. Declare infix functions for subtraction and division of complex numbers.
 
