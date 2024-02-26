@@ -119,3 +119,10 @@ module ``FP-03 tests`` =
         let expected = Pair (e,f)
         let actual = (a, b) .* (c, d)
         Assert.Equal<Pair>(expected, actual)
+        
+    [<Fact>]
+    let ``Exercise 4.4`` () =
+        let expected = 2500
+        let actual = altsum [1..100]
+        Assert.Equal(expected, actual);
+        
