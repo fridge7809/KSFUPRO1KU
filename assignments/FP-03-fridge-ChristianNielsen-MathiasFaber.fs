@@ -116,10 +116,10 @@ Exercise 3.5 Solve HR, exercise 3.3.
 
 type Pair = float * float
    
-let (.+) (a:Pair) (b:Pair) : Pair =
-    let (a1, a2) = a
-    let (b1, b2) = b
-    (a1 + b1, a2 + b2)
+let (.+) (x:Pair) (y:Pair) : Pair =
+    let (a, b) = x
+    let (c, d) = y
+    (a + c, b + d)
 
 let (.*) (x:Pair) (y:Pair) : Pair =
     let (a, b) = x
@@ -128,3 +128,24 @@ let (.*) (x:Pair) (y:Pair) : Pair =
     
 // 2. Declare infix functions for subtraction and division of complex numbers.
 
+let (.-) (x:Pair) (y:Pair) : Pair =
+    let (a, b) = x
+    let (c, d) = y
+    (a - c, b - d)
+    
+let (./) (x:Pair) (y:Pair) : Pair =
+    let (a, b) = x
+    let (c, d) = y
+    let denom = (c**2.0) + (d**2.0)
+    ((a*c + b*d) / denom, (b*c - a*d) / denom)
+    
+// 3. Use let expressions in the declaration of the division of complex numbers in order to avoid repeated evaluation of identical subexpressions.
+
+let result = (1.0, 2.0) ./ (3.0, 4.0)
+
+// 4.4 Give a declaration for altsum (see Page 76) containing just two clauses.
+
+let rec altsum xs =
+    match xs with
+    | x :: _ :: xs -> x + altsum xs
+    | _ -> 0
