@@ -145,7 +145,7 @@ let result = (1.0, 2.0) ./ (3.0, 4.0)
 
 // 4.4 Give a declaration for altsum (see Page 76) containing just two clauses.
 
-let rec altsum xs =
-    match xs with
-    | x :: _ :: xs -> x + altsum xs
-    | _ -> 0
+let rec altsum =
+    function
+    | x0::x1::xs -> x0 - x1 + altsum xs
+    | (lst: int list) -> List.sum lst
