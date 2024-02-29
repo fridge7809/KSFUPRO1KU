@@ -122,7 +122,7 @@ module ``FP-03 tests`` =
         
     [<Fact>]
     let ``Exercise 4.4`` () =
-        let expected = 2500
+        let expected = -50
         let actual = altsum [1..100]
         Assert.Equal(expected, actual);
         
