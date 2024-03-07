@@ -75,6 +75,10 @@ time (fun () -> ack (3,11))
 
 let timeArg1 f a = time (fun () -> f (a))
 
+
+(*
+Excersise 4.7
+*)
 let rec fact = function
 | 0 -> 1
 | n when n > 0 -> n * fact(n-1)
@@ -93,4 +97,15 @@ let buildList f n =
     |> List.rev
 
 
+//Downto1 alternative:
+let rec downTo1Alternative f n e = 
+    match n with
+    | n when n <= 0 -> e
+    | n -> downTo1Alternative f (n-1) e @ [n]
+
+let buildListAlternative f n = 
+    let list = downTo1Alternative f n []
+    List.map(fun x -> f x) list // List.map maps all items in the list here to be called with function f
+
+buildListAlternative fact 20
    
