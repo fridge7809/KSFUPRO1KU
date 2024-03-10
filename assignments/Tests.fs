@@ -126,3 +126,14 @@ module ``FP-03 tests`` =
         let actual = altsum [1..100]
         Assert.Equal(expected, actual);
         
+module ``FP-05 tests`` =
+    
+    open FP_05
+    
+    [<Fact>]
+    let ``Excercise 5.1 tree is traversed in order`` () =
+        let expected = [56; 25; 43; 562; 78]
+        let tree = Node(43, Node(25, Node(56,Leaf, Leaf), Leaf),Node(562, Leaf, Node(78, Leaf, Leaf)))
+        let actual = inOrder tree
+        Assert.Equal<int list>(expected, actual)
+        
