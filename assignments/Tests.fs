@@ -5,6 +5,7 @@ open System.Runtime.InteropServices.Marshalling
 open Xunit
 open assignments
 open assignments.FP_03
+open assignments.FP_05
 
 module ``FP-01 tests`` =
     
@@ -131,9 +132,15 @@ module ``FP-05 tests`` =
     open FP_05
     
     [<Fact>]
-    let ``Excercise 5.1 tree is traversed in order`` () =
+    let ``Exercise 5.1 tree is traversed in order`` () =
         let expected = [56; 25; 43; 562; 78]
         let tree = Node(43, Node(25, Node(56,Leaf, Leaf), Leaf),Node(562, Leaf, Node(78, Leaf, Leaf)))
         let actual = inOrder tree
         Assert.Equal<int list>(expected, actual)
         
+    [<Fact>]
+    let ``Exercise 5.2 tree is traversed in order and value is mapped`` () =
+        let tree = Node(43, Node(25, Node(56,Leaf, Leaf), Leaf),Node(562, Leaf, Node(78, Leaf, Leaf)))
+        let actual = mapInOrder (fun x -> x + 1) tree
+        let expected = Node(44,Node (26,Node (57,Leaf,Leaf),Leaf),Node (563,Leaf,Node (79,Leaf,Leaf)))
+        Assert.Equal<int BinaryTree>(expected, actual)
