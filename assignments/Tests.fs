@@ -144,3 +144,11 @@ module ``FP-05 tests`` =
         let actual = mapInOrder (fun x -> x + 1) tree
         let expected = Node(44,Node (26,Node (57,Leaf,Leaf),Leaf),Node (563,Leaf,Node (79,Leaf,Leaf)))
         Assert.Equal<int BinaryTree>(expected, actual)
+        
+    [<Fact>]
+    let ``Exercise 5.3 tree is traversed in order and value is mapped`` () =
+        let tree = Node(43.0,Node(25.0, Node(56.0,Leaf, Leaf), Leaf),Node(562.0, Leaf, Node(78.0, Leaf,Leaf)))
+        let actual = foldInOrder (fun acc x -> acc + x) 0.0 tree
+        let expected = 764.0
+        Assert.Equal<float>(expected, actual)
+        

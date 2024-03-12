@@ -24,3 +24,8 @@ let rec mapInOrder (f: 'a -> 'b) (t: 'a BinaryTree) : 'b BinaryTree =
 
 // Exercise 5.3
 
+let rec foldInOrder (f: 'a -> 'b -> 'b) (acc: 'b) (t: 'a BinaryTree) : 'b =
+    match t with
+    | Leaf -> acc
+    | Node (v, l, r) -> foldInOrder f (f v (foldInOrder f acc l)) r
+
