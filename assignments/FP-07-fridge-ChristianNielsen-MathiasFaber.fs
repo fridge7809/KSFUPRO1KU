@@ -1,7 +1,5 @@
 
-(* 7.1 (9.1)
-    Prooooobably not correct
-    
+(* 7.1 (9.1)    
         Stack:                              Heap:
 
 sf3      
@@ -21,14 +19,13 @@ sf0     xs                  ->               (1, ) -> (2, x)
         g                   ->               "closure for g"
         it                  ->               (1, ) -> (1, ) -> (2, ) -> (2, x)
 
-
 *)
 
 
 
 (* 7.2 (9.3) *)
-(* declare an iterative solution to excersize 1.6 *)
-// excersize 1.6
+(* declare an iterative solution to exercise 1.6 *)
+// exercise 1.6
 let rec sum (m: int, n: int) : int =
     match (m, n) with
     | m, 0 -> m
@@ -95,7 +92,7 @@ factA (30, 1)
 
 (* 7.5 (8.6) *)
 (*
-    Using mutable varibles, and updating them continously through the while loop
+    Using mutable variables, and updating them continuously through the while loop
 *)
 let fibonacci n =
     if n <= 0 then
