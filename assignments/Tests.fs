@@ -151,4 +151,4 @@ module ``FP-05 tests`` =
         let actual = foldInOrder (fun acc x -> acc + x) 0.0 tree
         let expected = 764.0
         Assert.Equal<float>(expected, actual)
-        
+            

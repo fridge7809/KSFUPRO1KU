@@ -10,6 +10,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="FP-08-fridge-ChristianNielsen-MathiasFaber.fs" />
+        <Compile Include="FP-07-fridge-ChristianNielsen-MathiasFaber.fs" />
         <Compile Include="FP-06-fridge-ChristianNielsen-MathiasFaber.fs" />
         <Compile Include="FP-05-fridge-ChristianNielsen-MathiasFaber.fs" />
         <Compile Include="FP-04-fridge-ChristianNielsen-MathiasFaber.fs" />
