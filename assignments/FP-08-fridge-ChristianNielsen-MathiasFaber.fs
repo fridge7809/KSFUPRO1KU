@@ -54,9 +54,6 @@ let ac = countAC t20000000 0 id // todo fix
 
 
 // Exercise 8.3 HR exercise 9.10.
-
-let rec bigListA n xs = if n=0 then xs
-                          else bigListA (n-1) (1::xs)
                           
 let rec bigListK n k =
           if n=0 then k []
@@ -87,11 +84,10 @@ bigListK(2, k2) ->
 bigListK(1, k3) ->
 bigListK(0, k4) -> k4([]) // base case met
 
-k1(1::k2(1::k3(1::k4(1::[])))) -> //    notice we must maintain a reference to prior stack frames 
+k1(1::k2(1::k3(1::k4(1::[])))) ->       notice we must maintain a reference to prior stack frames 
                                         to obtain what we must prepend
 x -> x (identity function)
 Result: [1, 1, 1, 1]
-
 *)
 
 // "Correct" implementation
@@ -102,6 +98,23 @@ let rec bigListKCorrect n k =
           else bigListK ( n - 1) (fun res -> k(1::res))
 
 // Exercise 8.4 HR exercise 9.11.
+
+let rec leftTree n =
+    let rec helper n acc =
+        match n with
+        | 0 -> acc
+        | n -> helper (n - 1) (Node(acc, n, Leaf))
+    helper n Leaf
+    
+let rec rightTree n =
+    let rec helper n acc =
+        match n with
+        | 0 -> acc
+        | n -> helper (n - 1) (Node(Leaf, n, acc))
+    helper n Leaf
+    
+// todo analyse count functions
+
 // The functions count and countC are found on page 214 in HR.
 // Exercise 8.5 HR exercise 11.1.
 // Exercise 8.6 HR exercise 11.2.
