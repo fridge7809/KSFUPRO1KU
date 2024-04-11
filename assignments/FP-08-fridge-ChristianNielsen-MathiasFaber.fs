@@ -105,16 +105,54 @@ let rec leftTree n =
         | 0 -> acc
         | n -> helper (n - 1) (Node(acc, n, Leaf))
     helper n Leaf
-    
+
+//leftTree 10
+
+
 let rec rightTree n =
     let rec helper n acc =
         match n with
         | 0 -> acc
         | n -> helper (n - 1) (Node(Leaf, n, acc))
     helper n Leaf
-    
-// todo analyse count functions
 
-// The functions count and countC are found on page 214 in HR.
+//rightTree 10
+
+// analyse count and countA functions with rightTree and leftTree
+// count and countA can be found in (* 8.1 (9.8) *) from line 9 in this doc
+
+let bigLeft: BinTree<int> = leftTree 100000
+
+let bigRight: BinTree<int> = rightTree 100000
+ 
+// running the functions with large left or right trees will hit the stack limit and crash 
+
+// Comparing count and countA shows us that countA is faster (although, it is difficult to measure on fast computers)
+//#time
+let cA = countA 0 bigLeft
+//#time
+let c = count bigLeft
+
+//#time
+let ac2 = countAC bigRight 0 id
+//#time
+let cc = countC bigRight id
+// again, difficult to measure time on fast computers, but it seems that countAC is faster than countC, because we use an accumulating parameter. 
+
+
+
 // Exercise 8.5 HR exercise 11.1.
+// Making a sequence of ALL positive odd numbers, then choosing the first 100 numbers and printing them.
+let oddNumbers = Seq.unfold (fun state -> Some(state, state + 2)) 1
+oddNumbers 
+|> Seq.take 100 
+|> Seq.iter (printfn "%d")
+
+
+
 // Exercise 8.6 HR exercise 11.2.
+// Making a sequence for all factorial numbers. Then printing the first 10 of them
+let factorials = Seq.unfold (fun (n, f) -> Some(f, (n + 1, f * (n + 1)))) (0, 1)
+factorials
+|> Seq.take 10
+|> Seq.iter (printfn "%d")
