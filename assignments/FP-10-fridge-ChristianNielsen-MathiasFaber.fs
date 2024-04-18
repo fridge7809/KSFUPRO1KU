@@ -51,10 +51,8 @@ let case3 =
 let indivisible (xs: 'a list) : bool =
     match xs with
     | xs when xs = [] -> true // true if empty
-    | xs ->
-        match split xs with
-        | (x,_) when xs.Length = 1 -> true // true if first list in tuple is of length 1, assumes test case 1 holds
-        | _ -> false
+    | xs when xs.Length = 1 -> true
+    | _ -> false
         
 // todo Declare a function merge xs ys of type
 
