@@ -1,5 +1,7 @@
 module assignments.FP_09
 
+open System.Reflection.Metadata
+
 // Question 2.1
 
 let random =
@@ -15,12 +17,12 @@ let genRandomsP (n:int) : int array =
 // Question 2.2
 
 let split (xs: 'a list) : ('a list * 'a list) =
-    let half = (xs.Length / 2)
-    if half = 0 then failwith "cannot split empty list"
-    let takeHalf (l: 'a list) : 'a list =
-        l |> List.take half
-    (takeHalf xs, takeHalf xs)
+    let half = xs.Length / 2
+    match half with
+    | half when half > 0 -> (List.take half xs, List.skip half xs)
+    | _ -> (List.take 1 xs,[])
     
+   
 // Test case 1: When splitting list with ood length, expect first list in tuple to be even and second list in tuple to be odd
 let isEven n =
     match n with
@@ -39,7 +41,6 @@ let case2 =
         assert (isEven x.Length)
         assert (isEven y.Length)
         
-    
 // Test case 3: list with 1 element is split into list containing element and empty list
 let case3 =
     match split [1..1] with
@@ -52,10 +53,12 @@ let indivisible (xs: 'a list) : bool =
     | xs when xs = [] -> true // true if empty
     | xs ->
         match split xs with
-        | (x,_) when x.Length = 1 -> true // true if first list in tuple is of length 1, assumes test case 1 holds
+        | (x,_) when xs.Length = 1 -> true // true if first list in tuple is of length 1, assumes test case 1 holds
         | _ -> false
         
 // todo Declare a function merge xs ys of type
 
+
+    
 // todo Question 2.3
     
