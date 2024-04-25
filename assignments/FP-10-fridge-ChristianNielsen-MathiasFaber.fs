@@ -1,4 +1,4 @@
-module assignments.FP_09
+module assignments.FP_10
 
 open System.Reflection.Metadata
 
@@ -54,9 +54,32 @@ let indivisible (xs: 'a list) : bool =
     | xs when xs.Length = 1 -> true
     | _ -> false
         
-// todo Declare a function merge xs ys of type
+    
+(* 2.2 declaring function merge *)
+let rec merge (left, right) =
+    match left, right with
+    | [], right -> right
+    | left, [] -> left
+    | firstLeft::restLeft, firstRight::restRight ->
+        if firstLeft <= firstRight then
+            firstLeft :: merge (restLeft, right)
+        else
+            firstRight :: merge (left, restRight)
 
 
-    
-// todo Question 2.3
-    
+(* 2.3 declaring function divideAndConquer *)
+let divideAndConquer split merge indivisible p =
+    let rec dc p =
+        if indivisible p then
+            p
+        else
+            let left, right = split p
+            merge ((dc left), (dc right))
+    dc p
+
+
+let testDivideAndConquer = divideAndConquer split merge indivisible [1; 2; 100; 200; 3; 9]
+
+
+(* 11.2 *)
+(* Find 11.2 in QueueWithMistakeFixed.java *)
