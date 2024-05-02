@@ -22,6 +22,7 @@
         <Compile Include="FP-02-fridge-ChristianNielsen-MathiasFaber.fs" />
         <Compile Include="FP-01-fridge-ChristianNielsen-MathiasFaber.fs" />
         <Compile Include="Tests.fs"/>
+        <None Include="evalCompExp.fsx" />
     </ItemGroup>
 
     <ItemGroup>
