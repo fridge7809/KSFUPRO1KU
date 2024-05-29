@@ -10,6 +10,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="FP-11-fridge-ChristianNielsen-MathiasFaber.fs" />
+        <None Include="ksfupr2024.fsx" />
+        <None Include="ksfupr2022.fsx" />
+        <None Include="ksfupr2020.fsx" />
         <Compile Include="FP-10-fridge-ChristianNielsen-MathiasFaber.fs" />
         <Compile Include="FP-09-fridge-ChristianNielsen-MathiasFaber.fs" />
         <Compile Include="FP-08-fridge-ChristianNielsen-MathiasFaber.fs" />
@@ -21,6 +25,8 @@
         <Compile Include="FP-02-fridge-ChristianNielsen-MathiasFaber.fs" />
         <Compile Include="FP-01-fridge-ChristianNielsen-MathiasFaber.fs" />
         <Compile Include="Tests.fs"/>
+        <None Include="evalCompExp.fsx" />
+        <None Include="TREE_TRAVERSAL.fsx" />
     </ItemGroup>
 
     <ItemGroup>
